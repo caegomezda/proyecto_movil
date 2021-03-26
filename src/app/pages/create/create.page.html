@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" icon="arrow-back-outline" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>create</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    
+    <form>
+
+      <ion-item lines="full">
+        <ion-input name="name" [(ngModel)]="formProduct.name" type="text" required placeholder="Nombre del pruducto:"></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-input name="price" [(ngModel)]="formProduct.price" type="text" required placeholder="Precio del pruducto:"></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-input name="description" [(ngModel)]="formProduct.description" type="text" required placeholder="Descripcion..."></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-input name="category_id" [(ngModel)]="formProduct.category_id" type="text" required placeholder="Categroria:"></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-input name="created" [(ngModel)]="formProduct.created" type="text" required placeholder="Fecha de creacion:"></ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="medium" expand="block" (click)="createProduct()">Crear producto</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+    
+  </ion-card>
+</ion-content>

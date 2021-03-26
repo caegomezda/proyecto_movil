@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'create',
+    loadChildren: () => import('./pages/create/create.module').then( m => m.CreatePageModule)
+  },
+  {
+    path: 'read',
+    loadChildren: () => import('./pages/read/read.module').then( m => m.ReadPageModule)
+  },
+  {
+    path: 'update',
+    loadChildren: () => import('./pages/update/update.module').then( m => m.UpdatePageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" icon="arrow-back-outline" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>read</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-list *ngIf="isload">
+      <ion-item *ngFor="let item of info">
+        <ion-item>
+          <label>{{item.name}}</label>
+        </ion-item>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
