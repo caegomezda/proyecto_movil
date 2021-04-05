@@ -23,10 +23,10 @@ export class HomePage {
     console.log("Read");
     this.router.navigate(['/read'])
   }
-  update(){
-    console.log("Update");
-    this.router.navigate(['/update'])
-  }
+  // update(){
+  //   console.log("Update");
+  //   this.router.navigate(['/update'])
+  // }
   create(){
     console.log("Create");
     this.router.navigate(['/create'])

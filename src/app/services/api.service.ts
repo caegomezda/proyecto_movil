@@ -23,18 +23,43 @@ export class ApiService {
       return result
   }
 
-  creatProduct(form){
-    console.log("creatProducto")
-    console.log("formulario en el api",form)
-    let product = JSON.stringify(form);
-    
-    console.log("JSON FORM",product);
-
-    const apiUrl = 'http://localhost/colombia_taxis/proyecto_prueba_movil/api/product/create.php';
-      let json = {product}
-      let result = this.http.post(`${apiUrl}`, json, this.httpOptions).pipe(map( data => data)).toPromise();
-      console.log("result api create",result);
+  redDataOne(id){
+    const apiUrl = `http://localhost/colombia_taxis/proyecto_prueba_movil/api/product/read_one.php?id=${id}`;
+    let json = {}
+    let result = this.http.post(`${apiUrl}`, json, this.httpOptions).pipe(map( data => data)).toPromise();
+    return result
   }
 
+  creatProduct(form){
+    
+    let options = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    };
+   var url = 'http://localhost/colombia_taxis/proyecto_prueba_movil/api/product/create.php';
+   return new Promise(resolve => {
+    this.http.post(url,JSON.stringify(form),options)
+       .subscribe(data => {
+         resolve(data);
+        });
+   });
+  }
+
+  updateData(form){
+    
+    let options = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    };
+   var url = 'http://localhost/colombia_taxis/proyecto_prueba_movil/api/product/update.php';
+   return new Promise(resolve => {
+    this.http.post(url,JSON.stringify(form),options)
+       .subscribe(data => {
+         resolve(data);
+        });
+   });
+  }
 
 }

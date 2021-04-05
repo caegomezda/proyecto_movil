@@ -31,22 +31,31 @@ export class CreatePage implements OnInit {
 
   ngOnInit() {
   }
-
   async createProduct(){
     console.log("creacion de producto")
     console.log("this.from",this.formProduct);
+
+    let toJson = JSON.stringify(this.formProduct);
+    console.log("toJson",toJson);
+
 
     const alert = await this.alertController.create({
         header: 'Alert',
         subHeader: 'Insertado Correctamente',
         message: 'Producto creado correctamente',
-        buttons: ['OK']
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              this.router.navigate(['/home']);
+            }
+          }
+        ]
     });
 
-    this.apiService.creatProduct(this.formProduct);
-    await alert.present();
-    
-    this.router.navigate(['/read']);
+    this.apiService.creatProduct(this.formProduct)
+    // this.apiService.creatProduct(toJson);
+    await alert.present()
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-read',
@@ -11,18 +13,29 @@ export class ReadPage implements OnInit {
   isload :Boolean = false;
   // items :Array<{ name: string}> = [];
   items:any[];
-  constructor(private apiServices : ApiService) {}
+  constructor(private apiServices : ApiService,
+              private router:Router,
+              private storage: StorageService) {}
   ngOnInit(){
     console.log("ngOnInit");
     this.fetchCalling();
   }
+
   async fetchCalling(){
     let data = await this.apiServices.readData()
     let result = data['records'];
     this.info = result;
     this.isload = true;
     // console.log("data", data);
-    // console.log("this.info",await this.info);
+    console.log("this.info",await this.info);
+  }
+
+  async upDateElement(id,data){
+    console.log("udated");
+    console.log("id",id);
+    await this.storage.recieveId(id);
+    await this.storage.recieveProductData(data);
+    this.router.navigate(['/update']);
   }
 
   onSearchTerm(ev: CustomEvent) {
